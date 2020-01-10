@@ -6,5 +6,8 @@ export const Button = styled.button`
   padding: 5px;
   background-color: white;
   text-decoration: none;
+  width: 150px;
+  height: 30px;
+  font-size: 25px;
 `;
 

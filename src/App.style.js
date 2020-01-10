@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const RouteContainer = styled.div`
-width: 100vw;
+width: 65vw;
 height: 100vh;
 display: flex;
 justify-content: center;

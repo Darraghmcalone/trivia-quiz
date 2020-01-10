@@ -4,11 +4,11 @@ import { ChoiceContainer, ChoiceText, ChoicePrefix } from './Question.styled'
 export default function Question({ question }) {
     return (
         <>
-            <h2>{question.question}</h2>
+            <h1 dangerouslySetInnerHTML={{ __html: question.question }}></h1>
             {question.answerChoices.map((choice, index) => (
-                <ChoiceContainer>
+                <ChoiceContainer key={index}>
                     <ChoicePrefix>{index + 1}</ChoicePrefix>
-                    <ChoiceText>{question.answerChoices[index]}</ChoiceText>
+                    <ChoiceText dangerouslySetInnerHTML={{ __html: question.answerChoices[index] }}></ChoiceText>
                 </ChoiceContainer>
             ))}
         </>
