@@ -9,7 +9,8 @@ export default class Quiz extends Component {
         this.state = {
             questions: null,
             currentQuestion: null,
-            loading: true
+            loading: true,
+            score: 0
         };
     }
     async componentDidMount() {
@@ -25,31 +26,33 @@ export default class Quiz extends Component {
             console.error(err);
         }
     }
-    changeQuestion = () => {
-        // get a random index of a question
-        const getRandomQuestionIndex = Math.floor(Math.random() * this.state.questions.length);
-        // Set the current question to the question at the random question index
-        const currentQuestion = this.state.questions[getRandomQuestionIndex]
-        // Remove that question from the questions going forward
-        const remainingQuestions = [...this.state.questions]
-        remainingQuestions.splice(getRandomQuestionIndex, 1)
-        //Update the state to reflect these changes
-        this.setState({
-            questions: remainingQuestions,
-            currentQuestion,
-            loading: false
-        })
-    }
+
+        changeQuestion = (bonus = 0) => {
+            const randomQuestionIndex = Math.floor(
+                Math.random() * this.state.questions.length
+            );
+            const currentQuestion = this.state.questions[randomQuestionIndex];
+            const remainingQuestions = [...this.state.questions];
+            remainingQuestions.splice(randomQuestionIndex, 1);
+    
+            this.setState((prevState) => ({
+                questions: remainingQuestions,
+                currentQuestion,
+                loading: false,
+                score: prevState.score + bonus
+            }));
+            console.log(this.state.score);
+        };
 
     render() {
-        console.log(this.state)
+        //console.log(this.state)
         return (
             <>
                 {this.state.loading && (
                     <Loader />
                 )}
-                {this.state.currentQuestion && (
-                    <Question question={this.state.currentQuestion} />
+                {!this.state.loading && this.state.currentQuestion && (
+                    <Question question={this.state.currentQuestion} changeQuestion={this.changeQuestion} />
                 )}
             </>
         );
