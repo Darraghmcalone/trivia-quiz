@@ -3,6 +3,7 @@ import Question from '../../components/Question/Question';
 import { loadQuestions } from '../../helper/QuestionsHelper';
 import { Loader } from '../../components/Loader/Loader';
 import HUD from '../../components/HUD/HUD';
+import { H1 } from './Quiz.style'
 
 export default class Quiz extends Component {
     constructor(props) {
@@ -12,7 +13,8 @@ export default class Quiz extends Component {
             currentQuestion: null,
             loading: true,
             score: 0,
-            questionNumber: 0
+            questionNumber: 0,
+            done: false
         };
     }
     async componentDidMount() {
@@ -30,6 +32,9 @@ export default class Quiz extends Component {
     }
 
     changeQuestion = (bonus = 0) => {
+        if (this.state.questions.length === 0) {
+            return this.setState({ done: true });
+        }
         const randomQuestionIndex = Math.floor(
             Math.random() * this.state.questions.length
         );
@@ -48,21 +53,23 @@ export default class Quiz extends Component {
     };
 
     render() {
-        //console.log(this.state)
         return (
             <>
-                {this.state.loading && (
+                {this.state.loading && !this.state.done && (
                     <Loader />
                 )}
-                {!this.state.loading && this.state.currentQuestion && (
-                    <>
-                        <HUD
-                            score={this.state.score}
-                            questionNumber={this.state.questionNumber}
-                        />
-                        <Question question={this.state.currentQuestion} changeQuestion={this.changeQuestion} />
-                    </>
-                )}
+                {!this.state.loading &&
+                    !this.state.done && this.state.currentQuestion && (
+                        <>
+                            <HUD
+                                score={this.state.score}
+                                questionNumber={this.state.questionNumber}
+                            />
+                            <Question question={this.state.currentQuestion} changeQuestion={this.changeQuestion} />
+
+                        </>
+                    )}
+                {this.state.done && <H1>DONE!!!</H1>}
             </>
         );
     }

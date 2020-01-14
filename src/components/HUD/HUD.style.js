@@ -4,6 +4,7 @@ export const HUDContainer = styled.div`
 display: flex;
 width: 100%;
 justify-content: space-between;
+margin-bottom: 10%;
 `;
 
 export const HUDPrefix = styled.p`
