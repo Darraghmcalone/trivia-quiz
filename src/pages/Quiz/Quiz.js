@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import Question from '../../components/Question';
+import Question from '../../components/Question/Question';
 import { loadQuestions } from '../../helper/QuestionsHelper';
-import { Loader } from '../../elements/Loader';
+import { Loader } from '../../components/Loader/Loader';
+import HUD from '../../components/HUD/HUD';
 
 export default class Quiz extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ export default class Quiz extends Component {
             questions: null,
             currentQuestion: null,
             loading: true,
-            score: 0
+            score: 0,
+            questionNumber: 0
         };
     }
     async componentDidMount() {
@@ -27,22 +29,23 @@ export default class Quiz extends Component {
         }
     }
 
-        changeQuestion = (bonus = 0) => {
-            const randomQuestionIndex = Math.floor(
-                Math.random() * this.state.questions.length
-            );
-            const currentQuestion = this.state.questions[randomQuestionIndex];
-            const remainingQuestions = [...this.state.questions];
-            remainingQuestions.splice(randomQuestionIndex, 1);
-    
-            this.setState((prevState) => ({
-                questions: remainingQuestions,
-                currentQuestion,
-                loading: false,
-                score: prevState.score + bonus
-            }));
-            console.log(this.state.score);
-        };
+    changeQuestion = (bonus = 0) => {
+        const randomQuestionIndex = Math.floor(
+            Math.random() * this.state.questions.length
+        );
+        const currentQuestion = this.state.questions[randomQuestionIndex];
+        const remainingQuestions = [...this.state.questions];
+        remainingQuestions.splice(randomQuestionIndex, 1);
+
+        this.setState((prevState) => ({
+            questions: remainingQuestions,
+            currentQuestion,
+            loading: false,
+            score: prevState.score + bonus,
+            questionNumber: prevState.questionNumber + 1
+        }));
+        console.log(this.state.score);
+    };
 
     render() {
         //console.log(this.state)
@@ -52,7 +55,13 @@ export default class Quiz extends Component {
                     <Loader />
                 )}
                 {!this.state.loading && this.state.currentQuestion && (
-                    <Question question={this.state.currentQuestion} changeQuestion={this.changeQuestion} />
+                    <>
+                        <HUD
+                            score={this.state.score}
+                            questionNumber={this.state.questionNumber}
+                        />
+                        <Question question={this.state.currentQuestion} changeQuestion={this.changeQuestion} />
+                    </>
                 )}
             </>
         );
