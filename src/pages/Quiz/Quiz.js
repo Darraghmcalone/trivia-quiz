@@ -3,7 +3,7 @@ import Question from '../../components/Question/Question';
 import { loadQuestions } from '../../helper/QuestionsHelper';
 import { Loader } from '../../components/Loader/Loader';
 import HUD from '../../components/HUD/HUD';
-import { H1 } from './Quiz.style'
+import SaveScoreForm from '../../components/SaveScoreForm/SaveScoreForm';
 
 export default class Quiz extends Component {
     constructor(props) {
@@ -69,7 +69,7 @@ export default class Quiz extends Component {
 
                         </>
                     )}
-                {this.state.done && <H1>DONE!!!</H1>}
+                {this.state.done && <SaveScoreForm score={this.state.score}/>}
             </>
         );
     }
