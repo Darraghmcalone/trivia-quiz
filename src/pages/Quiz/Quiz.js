@@ -33,7 +33,10 @@ export default class Quiz extends Component {
 
     changeQuestion = (bonus = 0) => {
         if (this.state.questions.length === 0) {
-            return this.setState({ done: true });
+            return this.setState((prevState) => ({
+                done: true,
+                score: prevState.score + bonus
+            }))
         }
         const randomQuestionIndex = Math.floor(
             Math.random() * this.state.questions.length
@@ -53,23 +56,24 @@ export default class Quiz extends Component {
     };
 
     render() {
+        const { loading, done, currentQuestion, questionNumber, score } = this.state;
         return (
             <>
-                {this.state.loading && !this.state.done && (
+                {loading && !done && (
                     <Loader />
                 )}
-                {!this.state.loading &&
-                    !this.state.done && this.state.currentQuestion && (
+                {!loading &&
+                    !done && currentQuestion && (
                         <>
                             <HUD
-                                score={this.state.score}
-                                questionNumber={this.state.questionNumber}
+                                score={score}
+                                questionNumber={questionNumber}
                             />
-                            <Question question={this.state.currentQuestion} changeQuestion={this.changeQuestion} />
+                            <Question question={currentQuestion} changeQuestion={this.changeQuestion} />
 
                         </>
                     )}
-                {this.state.done && <SaveScoreForm score={this.state.score}/>}
+                {done && <SaveScoreForm score={score} />}
             </>
         );
     }
