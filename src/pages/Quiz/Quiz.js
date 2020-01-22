@@ -31,6 +31,10 @@ export default class Quiz extends Component {
         }
     }
 
+    scoreSaved = () => {
+        this.props.history.push('/')
+    }
+
     changeQuestion = (bonus = 0) => {
         if (this.state.questions.length === 0) {
             return this.setState((prevState) => ({
@@ -73,7 +77,7 @@ export default class Quiz extends Component {
 
                         </>
                     )}
-                {done && <SaveScoreForm score={score} />}
+                {done && <SaveScoreForm score={score} scoreSaved={this.scoreSaved}/>}
             </>
         );
     }
