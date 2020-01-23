@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Button } from "../Button/Button";
 
 export const SaveScoreFormContainer = styled.div`
 display: flex;
@@ -28,8 +27,3 @@ input {
     box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5);
 }
 `
-
-export const FormButton = styled(Button)`
-width: 100%;
-padding: 15px 0px;
-`;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SaveScoreFormContainer, Form, FormButton } from './SaveScoreForm.styled'
+import { SaveScoreFormContainer, Form } from './SaveScoreForm.styled'
+import { Button } from "../Button/Button";
 import { useFirebase } from '../Firebase/FirebaseContext';
 
 export default function SaveScoreForm({ score, scoreSaved }) {
@@ -39,13 +40,13 @@ export default function SaveScoreForm({ score, scoreSaved }) {
                     value={username}
                     onChange={onUsernameChange}
                 />
-                <FormButton type="submit" disabled={!username}>
+                <Button type="submit" disabled={!username}>
                     Save
-                </FormButton>
+                </Button>
             </Form>
-            <FormButton as={Link}to="/" >
+            <Button as={Link}to="/" >
                 Go Home
-            </FormButton>
+            </Button>
         </SaveScoreFormContainer>
     );
 }

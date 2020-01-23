@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HomeContainer = styled.div`
-height: 30%;
+height: 35%;
 flex-direction: column;
 display: flex;
 align-items: center;
