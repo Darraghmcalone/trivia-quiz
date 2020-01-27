@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const QuestionContaioner = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
+
 export const ChoiceContainer = styled.div`
 display: flex;
 margin-bottom: 0.5rem;
@@ -22,10 +29,24 @@ export const ChoicePrefix = styled.div`
     padding: 1.5rem 2.5rem;
     background-color: #56a5eb;
     color: white;
+    @media only screen and (max-width: 786px) {
+    padding:0;
+    height: 80px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
     `;
 
 export const ChoiceText = styled.div`
     padding: 1.5rem;
     width: 100%;
+    @media only screen and (max-width: 786px) {
+        padding:0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
     `;
 

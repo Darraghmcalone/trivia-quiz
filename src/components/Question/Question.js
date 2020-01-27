@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ChoiceContainer, ChoiceText, ChoicePrefix } from './Question.styled'
+import { QuestionContaioner, ChoiceContainer, ChoiceText, ChoicePrefix } from './Question.styled'
 
 export default function Question({ question, changeQuestion }) {
     // React hooks to track state
@@ -29,7 +29,7 @@ console.log('classToApply:', classToApply)
 
  
     return (
-        <>
+        <QuestionContaioner>
             <h1 dangerouslySetInnerHTML={{ __html: question.question }}></h1>
             {question.answerChoices.map((choice, index) => (
                 <ChoiceContainer key={index}
@@ -41,6 +41,6 @@ console.log('classToApply:', classToApply)
                     <ChoiceText dangerouslySetInnerHTML={{ __html: choice }}></ChoiceText>
                 </ChoiceContainer>
             ))}
-        </>
+        </QuestionContaioner>
     )
 }

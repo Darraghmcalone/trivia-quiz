@@ -5,6 +5,9 @@ width: 20rem;
 height: 4rem;
 border: 0.3rem solid #56a5eb;
 margin-top: 1.5rem;
+@media only screen and (max-width: 424px) {
+    width: 16rem;
+}
 `;
 
 export const ProgressBarFull = styled.div`
