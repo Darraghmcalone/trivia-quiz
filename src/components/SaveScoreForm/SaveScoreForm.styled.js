@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const SaveScoreFormContainer = styled.div`
 display: flex;
-height: 50%;
 justify-content: space-around;
 align-items: center;
 flex-direction: column;
@@ -14,7 +13,7 @@ h1 {
 
 export const Form = styled.form`
 display: flex;
-height: 20%;
+height: 50%;
 justify-content: space-around;
 align-items: center;
 flex-direction: column;

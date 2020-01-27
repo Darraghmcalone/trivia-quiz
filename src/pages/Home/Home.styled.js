@@ -8,6 +8,7 @@ align-items: center;
 justify-content: space-between;
 h1 {
     font-size: 4em;
+    color: #56a5eb;
 }
 `;
 

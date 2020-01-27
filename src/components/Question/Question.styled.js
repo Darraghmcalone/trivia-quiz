@@ -13,6 +13,9 @@ background-color: white;
     transform: translateY(-0.1rem);
     transition: transform 150ms;
 }
+@media only screen and (max-width: 786px) {
+    width: 90%;
+}
 `;
 
 export const ChoicePrefix = styled.div`

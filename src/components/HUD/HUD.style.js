@@ -5,6 +5,11 @@ display: flex;
 width: 100%;
 justify-content: space-between;
 margin-bottom: 10%;
+@media only screen and (max-width: 786px) {
+flex-direction: column-reverse;
+justify-content: center;
+align-items: center;
+}
 `;
 
 export const HUDPrefix = styled.p`

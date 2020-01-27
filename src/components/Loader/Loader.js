@@ -17,5 +17,3 @@ animation: spin 2s linear infinite;
 }
 `;
 
-
-

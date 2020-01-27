@@ -9,6 +9,10 @@ li {
     font-size: 2.8rem;
     margin-bottom: 0.5rem;
 }
+@media only screen and ( min-width: 375px) and   (max-width: 786px) {
+    width: 70%;
+}
+
 `;
 
 export const HighScoreTitle = styled.h1`
