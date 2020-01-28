@@ -4,7 +4,13 @@ export const QuestionContaioner = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
-align-items: center;
+align-items: center
+width: 600px;
+@media only screen and (max-width: 425px) {
+    width: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+}
 `;
 
 export const ChoiceContainer = styled.div`
@@ -21,8 +27,7 @@ background-color: white;
     transition: transform 150ms;
 }
 @media only screen and (max-width: 786px) {
-    width: 90%;
-    height: 80px;
+    height: auto;
 }
 `;
 
@@ -43,7 +48,6 @@ export const ChoiceText = styled.div`
     padding: 1.5rem;
     width: 100%;
     @media only screen and (max-width: 786px) {
-        padding:0;
         display: flex;
         justify-content: center;
         align-items: center;

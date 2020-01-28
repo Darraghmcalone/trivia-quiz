@@ -16,9 +16,6 @@ background-color: white;
 @media only screen and (max-width: 786px) {
     width: 100%;
     padding: 0rem;
-    h1{
-        width: 90%
-    }
 }
 `;
 

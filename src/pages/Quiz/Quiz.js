@@ -4,6 +4,7 @@ import { loadQuestions } from '../../helper/QuestionsHelper';
 import { Loader } from '../../components/Loader/Loader';
 import HUD from '../../components/HUD/HUD';
 import SaveScoreForm from '../../components/SaveScoreForm/SaveScoreForm';
+import { QuizContainer } from './Quiz.style';
 
 export default class Quiz extends Component {
     constructor(props) {
@@ -68,16 +69,16 @@ export default class Quiz extends Component {
                 )}
                 {!loading &&
                     !done && currentQuestion && (
-                        <>
+                        <QuizContainer>
                             <HUD
                                 score={score}
                                 questionNumber={questionNumber}
                             />
                             <Question question={currentQuestion} changeQuestion={this.changeQuestion} />
 
-                        </>
+                        </QuizContainer>
                     )}
-                {done && <SaveScoreForm score={score} scoreSaved={this.scoreSaved}/>}
+                {done && <SaveScoreForm score={score} scoreSaved={this.scoreSaved} />}
             </>
         );
     }

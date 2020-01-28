@@ -24,5 +24,8 @@ input {
     font-size: 1.8rem;
     border: none;
     box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+    @media only screen and (max-width: 786px) {
+    width: 16rem;
+    }
 }
 `
