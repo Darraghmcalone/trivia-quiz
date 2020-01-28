@@ -37,7 +37,7 @@ export default function HighScores() {
         <>
             {loading && <Loader />}
             {!loading && (
-                <>
+                <HighScoreContainer>
                     <HighScoreTitle>High Scores</HighScoreTitle>
                     <HighScoresList>
                         {scores.map((record) => (
@@ -46,10 +46,10 @@ export default function HighScores() {
                             </li>
                         ))}
                     </HighScoresList>
-                    <Button style={{ width: '90%' }} as={Link} to="/" >
+                    <Button style={{ width: '70%' }} as={Link} to="/" >
                         Go Home
                     </Button>
-                </>
+                </HighScoreContainer>
             )}
         </>
     );
