@@ -22,6 +22,7 @@ background-color: white;
 }
 @media only screen and (max-width: 786px) {
     width: 90%;
+    height: 80px;
 }
 `;
 
@@ -31,7 +32,6 @@ export const ChoicePrefix = styled.div`
     color: white;
     @media only screen and (max-width: 786px) {
     padding:0;
-    height: 80px;
     width: 100px;
     display: flex;
     justify-content: center;

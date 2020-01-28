@@ -4,7 +4,7 @@ export const HUDContainer = styled.div`
 display: flex;
 width: 100%;
 justify-content: space-between;
-margin-bottom: 10%;
+margin-bottom: 5%;
 @media only screen and (max-width: 786px) {
 flex-direction: column-reverse;
 justify-content: center;

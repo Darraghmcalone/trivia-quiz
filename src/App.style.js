@@ -15,7 +15,7 @@ background: linear-gradient(rgba(250,0,0,0.5),transparent);
 background-color: white;
 @media only screen and (max-width: 786px) {
     width: 100%;
-    padding: 2rem 0rem;
+    padding: 0rem;
     h1{
         width: 90%
     }
