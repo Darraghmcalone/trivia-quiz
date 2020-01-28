@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const HighScoreContainer = styled.div`
+
+`;
+
 export const HighScoresList = styled.div`
 list-style: none;
 padding-left: 0;

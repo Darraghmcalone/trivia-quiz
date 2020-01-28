@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useFirebase } from '../../components/Firebase/FirebaseContext';
 import { Loader } from '../../components/Loader/Loader';
-import { HighScoresList, HighScoreTitle } from './HighScores.style'
+import { HighScoreContainer, HighScoresList, HighScoreTitle } from './HighScores.style'
+import { Link } from 'react-router-dom';
+import { Button } from "../../components/Button/Button";
 
 export default function HighScores() {
     const firebase = useFirebase();
@@ -44,6 +46,9 @@ export default function HighScores() {
                             </li>
                         ))}
                     </HighScoresList>
+                    <Button style={{ width: '90%' }} as={Link} to="/" >
+                        Go Home
+                    </Button>
                 </>
             )}
         </>
