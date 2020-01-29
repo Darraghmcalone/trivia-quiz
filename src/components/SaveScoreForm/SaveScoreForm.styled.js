@@ -6,8 +6,11 @@ justify-content: space-around;
 align-items: center;
 flex-direction: column;
 h1 {
-  font-size: 60px;
+  font-size: 4em
   color: #56a5eb
+  @media only screen and (max-width: 786px) {
+    font-size: 3.5rem;
+}
 }
 `;
 
@@ -24,8 +27,9 @@ input {
     font-size: 1.8rem;
     border: none;
     box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5);
-    @media only screen and (max-width: 786px) {
-    width: 16rem;
-    }
+      @media only screen and (max-width: 786px) {
+      width: 14.4rem;
+      font-size: 1.6rem;
+      }
 }
 `

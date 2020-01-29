@@ -15,8 +15,14 @@ align-items: center;
 export const HUDPrefix = styled.p`
 text-align: center;
 font-size: 2rem;
+@media only screen and (max-width: 786px) {
+    font-size: 1.6rem;
+}
     `;
 
 export const HUDText = styled.h1`
 text-align: center;
+@media only screen and (max-width: 786px) {
+    font-size: 1.6rem;
+}
     `;

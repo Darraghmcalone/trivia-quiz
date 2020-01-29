@@ -11,6 +11,11 @@ width: 600px;
     margin-left: 5%;
     margin-right: 5%;
 }
+@media only screen and (max-width: 768px) {
+    h1{
+        font-size: 1.6rem;
+    }
+}
 `;
 
 export const ChoiceContainer = styled.div`
@@ -51,6 +56,7 @@ export const ChoiceText = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 1.3rem;
         }
     `;
 

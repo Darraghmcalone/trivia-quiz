@@ -13,7 +13,6 @@ ${normalize()};
   .incorrect{
     background-color: #E61414;
   }
-
 `;
 
 export default GlobalStyle;
