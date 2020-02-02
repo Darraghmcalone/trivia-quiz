@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Question from '../../components/Question/Question';
 import { loadQuestions } from '../../helper/QuestionsHelper';
 import { Loader } from '../../components/Loader/Loader';
@@ -6,80 +6,80 @@ import HUD from '../../components/HUD/HUD';
 import SaveScoreForm from '../../components/SaveScoreForm/SaveScoreForm';
 import { QuizContainer } from './Quiz.style';
 
-export default class Quiz extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            questions: null,
-            currentQuestion: null,
-            loading: true,
-            score: 0,
-            questionNumber: 0,
-            done: false
-        };
+
+export default function Quiz({ history }) {
+
+    const [questions, setQuestions] = useState([])
+    const [currentQuestion, setCurrentQuestion] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [score, setScore] = useState(0)
+    const [questionNumber, setQuestionNumber] = useState(0)
+    const [done, setDone] = useState(false)
+
+    useEffect(() => {
+        loadQuestions()
+            .then(questions => setQuestions(questions))
+            .catch(err => console.log(err))
+    }, [])
+
+    const scoreSaved = () => {
+        history.push('/')
     }
-    async componentDidMount() {
-        try {
-            const questions = await loadQuestions();
-            this.setState(
-                { questions },
-                () => {
-                    this.changeQuestion();
-                }
+
+    const changeQuestion = useCallback(
+        (bonus = 0) => {
+            if (questions.length === 0) {
+                setDone(true);
+                return setScore(score + bonus);
+            }
+
+            const randomQuestionIndex = Math.floor(
+                Math.random() * questions.length
             );
-        } catch (err) {
-            console.error(err);
+            const currentQuestion = questions[randomQuestionIndex];
+            const remainingQuestions = [...questions];
+            remainingQuestions.splice(randomQuestionIndex, 1);
+
+            setQuestions(remainingQuestions);
+            setCurrentQuestion(currentQuestion);
+            setLoading(false);
+            setScore(score + bonus);
+            setQuestionNumber(questionNumber + 1);
+        },
+        [
+            score,
+            questionNumber,
+            questions,
+            setQuestions,
+            setLoading,
+            setCurrentQuestion,
+            setQuestionNumber
+        ]
+    );
+
+    useEffect(() => {
+        if (!currentQuestion && questions.length) {
+            changeQuestion();
         }
-    }
+    }, [currentQuestion, questions, changeQuestion]);
 
-    scoreSaved = () => {
-        this.props.history.push('/')
-    }
+    return (
+        <>
+            {loading && !done && (
+                <Loader />
+            )}
+            {!loading &&
+                !done && currentQuestion && (
+                    <QuizContainer>
+                        <HUD
+                            score={score}
+                            questionNumber={questionNumber}
+                        />
+                        <Question question={currentQuestion} changeQuestion={changeQuestion} />
 
-    changeQuestion = (bonus = 0) => {
-        if (this.state.questions.length === 0) {
-            return this.setState((prevState) => ({
-                done: true,
-                score: prevState.score + bonus
-            }))
-        }
-        const randomQuestionIndex = Math.floor(
-            Math.random() * this.state.questions.length
-        );
-        const currentQuestion = this.state.questions[randomQuestionIndex];
-        const remainingQuestions = [...this.state.questions];
-        remainingQuestions.splice(randomQuestionIndex, 1);
-
-        this.setState((prevState) => ({
-            questions: remainingQuestions,
-            currentQuestion,
-            loading: false,
-            score: prevState.score + bonus,
-            questionNumber: prevState.questionNumber + 1
-        }));
-        console.log(this.state.score);
-    };
-
-    render() {
-        const { loading, done, currentQuestion, questionNumber, score } = this.state;
-        return (
-            <>
-                {loading && !done && (
-                    <Loader />
+                    </QuizContainer>
                 )}
-                {!loading &&
-                    !done && currentQuestion && (
-                        <QuizContainer>
-                            <HUD
-                                score={score}
-                                questionNumber={questionNumber}
-                            />
-                            <Question question={currentQuestion} changeQuestion={this.changeQuestion} />
-
-                        </QuizContainer>
-                    )}
-                {done && <SaveScoreForm score={score} scoreSaved={this.scoreSaved} />}
-            </>
-        );
-    }
+            {done && <SaveScoreForm score={score} scoreSaved={scoreSaved} />}
+        </>
+    );
 }

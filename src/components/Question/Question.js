@@ -7,8 +7,6 @@ export default function Question({ question, changeQuestion }) {
     const [selectedAnswer, setSelectedAnswer] = useState(-1);
     const [answering, setAnswering] = useState(false);
 
-console.log('classToApply:', classToApply)
-
     const checkAnswer = (selectedAnswer) => {
         if (answering) return;
 
