@@ -6,9 +6,19 @@ import HUD from '../../components/HUD/HUD';
 import SaveScoreForm from '../../components/SaveScoreForm/SaveScoreForm';
 import { QuizContainer } from './Quiz.style';
 
+interface History {
+    push?: any;
+}
 
-export default function Quiz({ history }) {
 
+interface Props {
+    history:  any | History;
+}
+
+
+export default function Quiz({ history }: Props) {
+
+    console.log(history)
     const [questions, setQuestions] = useState([])
     const [currentQuestion, setCurrentQuestion] = useState(null)
     const [loading, setLoading] = useState(true)
