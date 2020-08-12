@@ -6,7 +6,7 @@ import GlobalStyle from './Global';
 import { RouteContainer } from './App.style'
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />

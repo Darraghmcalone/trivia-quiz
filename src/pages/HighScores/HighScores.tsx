@@ -1,16 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, FunctionComponent } from 'react'
 import { useFirebase } from '../../components/Firebase/FirebaseContext';
 import { Loader } from '../../components/Loader/Loader';
 import { HighScoreContainer, HighScoresList, HighScoreTitle, HighScoreButton } from './HighScores.style'
 import { Link } from 'react-router-dom';
 
-export default function HighScores() {
+interface Score {
+    key: string;
+    name: string;
+    score: number;
+}
+
+interface HighScoresProps {
+    highScores: Score[];
+    loadingInit?: boolean;   
+}
+
+ const HighScores: FunctionComponent <HighScoresProps> = ({highScores, loadingInit = true}) =>  {
+   
     const firebase = useFirebase();
-    const [scores, setScores] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [scores, setScores] = useState(highScores);
+    const [loading, setLoading] = useState(loadingInit);
 
     useEffect(() => {
-        firebase.scores().once('value', (snapshot) => {
+        firebase.scores().once('value', (snapshot: any) => {
             const data = snapshot.val();
             const sortedScores = formatScoreData(data);
             setScores(sortedScores);
@@ -18,7 +30,7 @@ export default function HighScores() {
         });
     },[firebase]);
 
-    const formatScoreData = (firebaseScores) => {
+    const formatScoreData = (firebaseScores: any) => {
         const scores = [];
 
         for (let key in firebaseScores) {
@@ -39,7 +51,7 @@ export default function HighScores() {
                 <HighScoreContainer>
                     <HighScoreTitle>High Scores</HighScoreTitle>
                     <HighScoresList>
-                        {scores.map((record) => (
+                        {scores.map((record) => (                         
                             <li key={record.key}>
                                 {record.name} - {record.score}
                             </li>
@@ -53,3 +65,5 @@ export default function HighScores() {
         </>
     );
 }
+
+export default HighScores
