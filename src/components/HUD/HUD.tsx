@@ -15,7 +15,7 @@ const HUD: FunctionComponent<HUDProps> = ({
         <HUDContainer>
             <div>
                 <HUDPrefix>Question {questionNumber}/10</HUDPrefix>
-                <ProgressBar max={10} current={questionNumber} />
+                <ProgressBar current={questionNumber} />
             </div>
             <div>
                 <HUDPrefix>Score</HUDPrefix>

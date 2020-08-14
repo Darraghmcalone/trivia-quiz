@@ -18,7 +18,6 @@ interface Props {
 
 export default function Quiz({ history }: Props) {
 
-    console.log(history)
     const [questions, setQuestions] = useState([])
     const [currentQuestion, setCurrentQuestion] = useState(null)
     const [loading, setLoading] = useState(true)

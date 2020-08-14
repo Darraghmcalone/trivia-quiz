@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react'
 import { ProgressBarContainer, ProgressBarFull } from './ProgressBar.style';
 
-export default function ProgressBar({ max, current }) {
+interface ProgressBarProps {
+    max?: number;
+    current: number;
+}
+
+const ProgressBar: FunctionComponent<ProgressBarProps> = ({ max = 10, current }) => {
     const width = (current / max) * 100;
     return (
         <ProgressBarContainer>
@@ -9,3 +14,5 @@ export default function ProgressBar({ max, current }) {
         </ProgressBarContainer>
     );
 }
+
+export default ProgressBar
