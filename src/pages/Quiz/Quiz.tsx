@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, FunctionComponent } from 'react'
+import { RouteComponentProps } from 'react-router-dom';
 import Question from '../../components/Question/Question';
 import { loadQuestions } from '../../helper/QuestionsHelper';
 import { Loader } from '../../components/Loader/Loader';
@@ -6,20 +7,17 @@ import HUD from '../../components/HUD/HUD';
 import SaveScoreForm from '../../components/SaveScoreForm/SaveScoreForm';
 import { QuizContainer } from './Quiz.style';
 
-interface History {
-    push?: any;
-}
+export type QuestionType = {
+    answer: number | null;
+    answerChoices: string[];
+    question: string;
+};
 
-
-interface Props {
-    history:  any | History;
-}
-
-
-export default function Quiz({ history }: Props) {
-
-    const [questions, setQuestions] = useState([])
-    const [currentQuestion, setCurrentQuestion] = useState(null)
+const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
+    const [questions, setQuestions] = useState<QuestionType[]>([]);
+    const [currentQuestion, setCurrentQuestion] = useState<QuestionType | null>(
+        null
+    );
     const [loading, setLoading] = useState(true)
     const [score, setScore] = useState(0)
     const [questionNumber, setQuestionNumber] = useState(0)
@@ -92,3 +90,5 @@ export default function Quiz({ history }: Props) {
         </>
     );
 }
+
+export default Quiz

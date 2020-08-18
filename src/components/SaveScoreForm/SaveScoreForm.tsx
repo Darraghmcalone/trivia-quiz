@@ -7,9 +7,9 @@ import { useFirebase } from '../Firebase/FirebaseContext';
 interface SaveScoreFormProps {
     score: number;
     scoreSaved: () => void;
-  }
+}
 
-const SaveScoreForm: FunctionComponent<SaveScoreFormProps> = ({ score, scoreSaved }: SaveScoreFormProps) => {
+const SaveScoreForm: FunctionComponent<SaveScoreFormProps> = ({ score, scoreSaved }) => {
     const [username, setUsername] = useState('');
     const firebase = useFirebase();
 

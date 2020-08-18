@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, FunctionComponent } from 'react'
 import { QuestionContaioner, ChoiceContainer, ChoiceText, ChoicePrefix } from './Question.styled'
+import { QuestionType } from '../../pages/Quiz/Quiz';
 
-export default function Question({ question, changeQuestion }) {
+interface QuestionProps {
+    question: QuestionType;
+    changeQuestion: (bonus: number) => void;
+}
+
+const Question: FunctionComponent<QuestionProps> = ({ question, changeQuestion }) => {
     // React hooks to track state
     const [classToApply, setClassToApply] = useState('');
     const [selectedAnswer, setSelectedAnswer] = useState(-1);
     const [answering, setAnswering] = useState(false);
 
-    const checkAnswer = (selectedAnswer) => {
+    const checkAnswer = (selectedAnswer: number) => {
         if (answering) return;
 
         setAnswering(true);
@@ -25,7 +31,6 @@ export default function Question({ question, changeQuestion }) {
         }, 1000);
     };
 
- 
     return (
         <QuestionContaioner>
             <h1 dangerouslySetInnerHTML={{ __html: question.question }}></h1>
@@ -42,3 +47,4 @@ export default function Question({ question, changeQuestion }) {
         </QuestionContaioner>
     )
 }
+export default Question
