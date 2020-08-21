@@ -5,7 +5,7 @@ display: flex;
 width: 100%;
 justify-content: space-between;
 margin-bottom: 5%;
-@media only screen and (max-width: 786px) {
+@media only screen and (max-width: 425px) {
 flex-direction: column-reverse;
 justify-content: center;
 align-items: center;

@@ -10,10 +10,9 @@ width: 600px;
     width: auto;
     margin-left: 5%;
     margin-right: 5%;
-}
-@media only screen and (max-width: 768px) {
     h1{
-        font-size: 1.6rem;
+        font-size: 1.2rem;
+        margin: 1rem 0;
     }
 }
 `;
@@ -52,7 +51,7 @@ export const ChoicePrefix = styled.div`
 export const ChoiceText = styled.div`
     padding: 1.5rem;
     width: 100%;
-    @media only screen and (max-width: 786px) {
+    @media only screen and (max-width: 425px) {
         display: flex;
         justify-content: center;
         align-items: center;

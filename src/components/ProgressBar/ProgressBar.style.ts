@@ -5,8 +5,9 @@ width: 20rem;
 height: 4rem;
 border: 0.3rem solid #56a5eb;
 margin-top: 1.5rem;
-@media only screen and (max-width: 424px) {
+@media only screen and (max-width: 425px) {
     width: 16rem;
+    height: 2rem;
 }
 `;
 
