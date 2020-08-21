@@ -5,7 +5,6 @@ const GlobalStyle = createGlobalStyle`
 ${normalize()};
   html {
     box-sizing: border-box;
-    height: 100vh; 
   }
   .correct{
     background-color: #159AE1
