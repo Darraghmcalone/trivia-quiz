@@ -6,6 +6,7 @@ import { Loader } from '../../components/Loader/Loader';
 import HUD from '../../components/HUD/HUD';
 import SaveScoreForm from '../../components/SaveScoreForm/SaveScoreForm';
 import { QuizContainer } from './Quiz.style';
+import useTimer from "../../hooks/useTimer";
 
 export type QuestionType = {
     answer: number | null;
@@ -23,9 +24,12 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
     const [questionNumber, setQuestionNumber] = useState(0)
     const [done, setDone] = useState(false)
 
+    const { isTimerActive, seconds, setSeconds, startTimer, stopTimer } = useTimer();
+
     useEffect(() => {
         loadQuestions()
             .then(questions => setQuestions(questions))
+            .then(() => startTimer())
             .catch(err => console.log(err))
     }, [])
 
@@ -37,6 +41,7 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
         (bonus = 0) => {
             if (questions.length === 0) {
                 setDone(true);
+                stopTimer()
                 return setScore(score + bonus);
             }
 
@@ -60,9 +65,15 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
             setQuestions,
             setLoading,
             setCurrentQuestion,
-            setQuestionNumber
+            setQuestionNumber,
+            stopTimer
         ]
     );
+
+    if (seconds > 10) {
+        setSeconds(0)
+        changeQuestion()
+    }
 
     useEffect(() => {
         if (!currentQuestion && questions.length) {
@@ -76,14 +87,14 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
                 <Loader />
             )}
             {!loading &&
-                !done && currentQuestion && (
+                !done && currentQuestion && isTimerActive && (
                     <QuizContainer>
                         <HUD
                             score={score}
                             questionNumber={questionNumber}
                         />
+                        <div>{seconds}</div>
                         <Question question={currentQuestion} changeQuestion={changeQuestion} />
-
                     </QuizContainer>
                 )}
             {done && <SaveScoreForm score={score} scoreSaved={scoreSaved} />}
