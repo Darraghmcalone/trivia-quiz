@@ -6,9 +6,10 @@ width: 100%;
 justify-content: space-between;
 margin-bottom: 5%;
 @media only screen and (max-width: 425px) {
-flex-direction: column-reverse;
-justify-content: center;
-align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0%;
 }
 `;
 

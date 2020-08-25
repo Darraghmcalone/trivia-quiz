@@ -7,9 +7,7 @@ justify-content: center;
 align-items: center
 width: 600px;
 @media only screen and (max-width: 425px) {
-    width: auto;
-    margin-left: 5%;
-    margin-right: 5%;
+    width: 85%;
     h1{
         font-size: 1.2rem;
         margin: 1rem 0;
@@ -30,8 +28,8 @@ background-color: white;
     transform: translateY(-0.1rem);
     transition: transform 150ms;
 }
-@media only screen and (max-width: 786px) {
-    height: auto;
+@media only screen and (max-width: 425px) {
+    height: 14%;
 }
 `;
 

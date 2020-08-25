@@ -70,8 +70,8 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
         ]
     );
 
-    if (seconds > 10) {
-        setSeconds(0)
+    if (seconds === 0) {
+        setSeconds(10)
         changeQuestion()
     }
 
@@ -93,7 +93,9 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
                             score={score}
                             questionNumber={questionNumber}
                         />
-                        <div>{seconds}</div>
+                        <>
+                       <h3> Time remaining: {seconds}</h3>
+                        </>
                         <Question question={currentQuestion} changeQuestion={changeQuestion} />
                     </QuizContainer>
                 )}

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 
 const useTimer = () => {
-    const [seconds, setSeconds] = useState<number>(0);
+    const [seconds, setSeconds] = useState<number>(10);
     const [isTimerActive, setIsTimerActive] = useState<boolean>(false)
 
     useEffect(() => {
         const timer: number = setInterval(() => {
-            setSeconds(seconds + 1)
+            setSeconds(seconds - 1)
         }, 1000)
         if (!isTimerActive && seconds !== 0) {
             clearInterval(timer);

@@ -7,6 +7,7 @@ border: 0.3rem solid #56a5eb;
 margin-top: 1.5rem;
 @media only screen and (max-width: 425px) {
     width: 16rem;
+    margin-top: 0;
     height: 2rem;
 }
 `;
