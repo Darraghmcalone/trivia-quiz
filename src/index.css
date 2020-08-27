@@ -12,4 +12,6 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
   }
-  
+  body > #root > div {
+    height: 100vh;
+  }

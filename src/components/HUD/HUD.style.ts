@@ -9,6 +9,8 @@ margin-bottom: 5%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+@media only screen and (max-width: 786px) {
     margin-bottom: 0%;
 }
 `;
