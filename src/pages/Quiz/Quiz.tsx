@@ -31,7 +31,7 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
             .then(questions => setQuestions(questions))
             .then(() => startTimer())
             .catch(err => console.log(err))
-    }, [])
+    }, [])  // eslint-disable-line react-hooks/exhaustive-deps
 
     const scoreSaved = () => {
         history.push('/')
