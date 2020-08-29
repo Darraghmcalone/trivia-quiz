@@ -10,6 +10,8 @@ Trivia Quiz is an application built with React and using Firebase for storing/re
 - Node - Runtime Server
 - NPM - Package Manager
 - React - UI design 
+- Typescript - Proptype checking
+
 
 ## Back End
 - Firebase - Database
