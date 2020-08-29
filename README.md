@@ -21,7 +21,8 @@ Trivia Quiz is an application built with React and using Firebase for storing/re
 - An animated progress bar keeps tracks of the number of questions answered.
 - Keeps score of the user's correct answers in local storage. 
 - Leaderboard retrieves top 10 high scores from the Firebase database.
-- A 30-second timer for each question. ** COMING SOON **
+- A 10-second timer for each question. 
+- A screen for users to select from 9 different Question categories. 
 
 # Installation 
 1. Download or clone the repo.
