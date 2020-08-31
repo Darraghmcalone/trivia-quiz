@@ -9,7 +9,7 @@ align-items: center;
 width: 65vw;
 max-width: 80rem;
 margin: 0 auto;
-padding: 2rem;
+padding: 0 2rem;
 background: linear-gradient(rgba(250,0,0,0.5),transparent);
 background-color: white;
 @media only screen and (max-width: 786px) {
