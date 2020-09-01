@@ -12,7 +12,7 @@ margin: 0 auto;
 padding: 0 2rem;
 background: linear-gradient(rgba(250,0,0,0.5),transparent);
 background-color: white;
-@media only screen and (max-width: 786px) {
+@media only screen and (max-width: 768px) {
     width: 100%;
     padding: 0rem;
 }

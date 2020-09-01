@@ -37,7 +37,7 @@ export const ChoicePrefix = styled.div`
     padding: 1.5rem 2.5rem;
     background-color: #56a5eb;
     color: white;
-    @media only screen and (max-width: 786px) {
+    @media only screen and (max-width: 768px) {
     padding:0;
     width: 100px;
     display: flex;
