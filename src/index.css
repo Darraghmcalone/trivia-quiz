@@ -13,5 +13,5 @@ body {
       monospace;
   }
   body > #root > div {
-    height: 100vh;
+    min-height: 100vh;
   }
