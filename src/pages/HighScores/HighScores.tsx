@@ -48,7 +48,6 @@ const HighScores: FunctionComponent<HighScoresProps> = ({
 
     return scores
       .sort((score1, score2) => score2.score - score1.score)
-      .slice(0, 10);
   };
 
   return (
@@ -61,7 +60,7 @@ const HighScores: FunctionComponent<HighScoresProps> = ({
             {scores.map((record, index) => (
               <div className="highScoreItem" key={record.key}>
                 <div className="leftCol">
-                  <h6> {index + 1} </h6>
+                  <h5 className="position"> {index + 1} </h5>
                   <h5>{record.name}</h5>
                 </div>
                 <h5>{record.score}</h5>

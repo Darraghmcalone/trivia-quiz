@@ -51,7 +51,7 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
             const currentQuestion = questions[randomQuestionIndex];
             const remainingQuestions = [...questions];
             remainingQuestions.splice(randomQuestionIndex, 1);
-
+            setSeconds(10)
             setQuestions(remainingQuestions);
             setCurrentQuestion(currentQuestion);
             setLoading(false);
@@ -66,7 +66,8 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
             setLoading,
             setCurrentQuestion,
             setQuestionNumber,
-            stopTimer
+            stopTimer,
+            setSeconds
         ]
     );
 

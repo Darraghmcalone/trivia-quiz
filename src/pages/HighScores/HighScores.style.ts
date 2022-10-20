@@ -31,26 +31,31 @@ export const HighScoresList = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    h5 {
-      margin-left: 40px;
+    padding-right: 20px;
+    .position {
+      margin-right: 40px;
     }
   }
   .highScoreItem {
     display: flex;
     align-items: center;
     border-radius: 6px;
-    border: none;
-    box-shadow: 0 0rem 0.4rem 0 rgb(86 185 235 / 50%);
+    border-color: rgb(86 185 235 / 50%);
+    border-width: 1px;
+    border-style: solid;
     padding: 0px 15px;
-    margin-top: 25px;
+    margin-top: 10px;
     height: 70px;
+    width: auto;
+    background-color: white;
   }
   h5,h6 {
     margin: 0;
+    color: black;
   }
 
   @media only screen and (max-width: 768px) {
-    width: 70%;
+    width: 90%;
     div {
       font-size: 1.5rem;
     }
