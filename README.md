@@ -4,7 +4,7 @@
 
 Trivia Quiz is an application built with React and using Firebase for storing/retrieving high scores. It involves answering 10 randomly API sourced questions.
 
-The project is live: https://trivia-quiz-app.com .
+The project is live: https://master--cozy-granita-217c3a.netlify.app/ .
 
 # Technologies
 
