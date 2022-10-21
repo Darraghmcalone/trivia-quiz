@@ -6,8 +6,6 @@ justify-content: center;
 flex-direction: column;
 text-align: center;
 align-items: center;
-width: 65vw;
-max-width: 80rem;
 margin: 0 auto;
 padding: 0 2rem;
 background: #7f3fe6;

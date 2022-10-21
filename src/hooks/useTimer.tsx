@@ -5,7 +5,7 @@ const useTimer = () => {
     const [isTimerActive, setIsTimerActive] = useState<boolean>(false)
 
     useEffect(() => {
-        const timer: any = setInterval(() => {
+        const timer = setInterval(() => {
             setSeconds(seconds - 1)
         }, 1000)
         if (!isTimerActive && seconds !== 0) {
