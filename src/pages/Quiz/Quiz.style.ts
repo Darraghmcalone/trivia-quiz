@@ -6,6 +6,9 @@ export const QuizContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  h3 {
+    color: ${(props) => props.theme.colors.darkGrey};
+  }
 `;
 
 

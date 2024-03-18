@@ -42,6 +42,7 @@ const Question: FunctionComponent<QuestionProps> = ({
   return (
     <QuestionContaioner>
       <h1 dangerouslySetInnerHTML={{ __html: question.question }}></h1>
+      <div>
       {question.answerChoices.map((choice, index) => (
         <ChoiceContainer
           key={index}
@@ -54,6 +55,7 @@ const Question: FunctionComponent<QuestionProps> = ({
           <ChoiceText dangerouslySetInnerHTML={{ __html: choice }}></ChoiceText>
         </ChoiceContainer>
       ))}
+      </div>
     </QuestionContaioner>
   );
 };

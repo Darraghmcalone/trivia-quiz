@@ -6,6 +6,9 @@ flex-direction: column;
 justify-content: center;
 align-items: center
 width: 600px;
+h1 {
+  color: ${(props) => props.theme.colors.darkGrey};
+}
 @media only screen and (max-width: 425px) {
     width: 85%;
     h1{
@@ -35,7 +38,7 @@ export const ChoiceContainer = styled.div`
 
 export const ChoicePrefix = styled.div`
   padding: 1.5rem 2.5rem;
-  background-color: #56a5eb;
+  background-color: ${(props) => props.theme.colors.primary};
   color: white;
   width: 15%;
   @media only screen and (max-width: 768px) {
@@ -50,7 +53,7 @@ export const ChoicePrefix = styled.div`
 export const ChoiceText = styled.div`
   padding: 1.5rem;
   width: 100%;
-  color: black;
+  color: ${(props) => props.theme.colors.darkGrey};
   @media only screen and (max-width: 425px) {
     display: flex;
     justify-content: center;

@@ -7,7 +7,7 @@ align-items: center;
 flex-direction: column;
 h1 {
   font-size: 4em
-  color: #56a5eb
+  color: ${(props) => props.theme.colors.darkGrey};
   @media only screen and (max-width: 768px) {
     font-size: 3.5rem;
 }

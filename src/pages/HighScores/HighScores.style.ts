@@ -51,7 +51,7 @@ export const HighScoresList = styled.div`
   }
   h5,h6 {
     margin: 0;
-    color: black;
+    color: ${(props) => props.theme.colors.darkGrey};
   }
 
   @media only screen and (max-width: 768px) {
@@ -67,7 +67,7 @@ export const HighScoresList = styled.div`
 
 export const HighScoreTitle = styled.h1`
   font-size: 2.5rem;
-  color: #56a5eb;
+  color: ${(props) => props.theme.colors.primary};;
 
   @media only screen and (max-width: 768px) {
     font-size: 2rem;

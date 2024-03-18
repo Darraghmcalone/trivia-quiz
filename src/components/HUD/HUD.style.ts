@@ -18,6 +18,7 @@ margin-bottom: 5%;
 export const HUDPrefix = styled.p`
 text-align: center;
 font-size: 2rem;
+color: ${(props) => props.theme.colors.darkGrey};
 @media only screen and (max-width: 786px) {
     font-size: 1.6rem;
 }
@@ -25,6 +26,7 @@ font-size: 2rem;
 
 export const HUDText = styled.h1`
 text-align: center;
+color: ${(props) => props.theme.colors.darkGrey};
 @media only screen and (max-width: 786px) {
     font-size: 1.6rem;
 }

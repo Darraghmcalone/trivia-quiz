@@ -8,7 +8,7 @@ text-align: center;
 align-items: center;
 margin: 0 auto;
 padding: 0 2rem;
-background: #7f3fe6;
+background: ${(props) => props.theme.colors.skyBlue};
 @media only screen and (max-width: 768px) {
     width: 100%;
     padding: 0rem;
