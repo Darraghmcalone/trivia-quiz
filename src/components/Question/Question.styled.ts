@@ -8,12 +8,12 @@ align-items: center
 width: 600px;
 h1 {
   color: ${(props) => props.theme.colors.darkGrey};
+  margin: 2rem 0 3rem 0;
 }
 @media only screen and (max-width: 425px) {
     width: 85%;
     h1{
         font-size: 1.2rem;
-        margin: 1rem 0;
     }
 }
 `;
@@ -61,4 +61,3 @@ export const ChoiceText = styled.div`
     font-size: 1.3rem;
   }
 `;
-

@@ -1,27 +1,33 @@
-import React, { FunctionComponent } from 'react'
-import { HUDContainer, HUDPrefix, HUDText } from './HUD.style';
-import ProgressBar from '../ProgressBar/ProgressBar'
+import React, { FunctionComponent } from 'react';
+import { HUDContainer, HUDPrefix } from './HUD.style';
+import CircularProgress from '../CircularProgress/CircularProgress';
 
 interface HUDProps {
-    score: number,
-    questionNumber: number
+  score: number;
+  questionNumber: number;
+  timeRemaining: number;
 }
 
 const HUD: FunctionComponent<HUDProps> = ({
-    score,
-    questionNumber,
+  score,
+  questionNumber,
+  timeRemaining,
 }) => {
-    return (
-        <HUDContainer>
-            <div>
-                <HUDPrefix>Question {questionNumber}/10</HUDPrefix>
-                <ProgressBar current={questionNumber} />
-            </div>
-            <div>
-                <HUDPrefix>Score</HUDPrefix>
-                <HUDText>{score}</HUDText>
-            </div>
-        </HUDContainer>
-    )
-}
-export default HUD
+  const totalTime = 10;
+  return (
+    <HUDContainer>
+        <CircularProgress
+          progress={timeRemaining}
+          total={totalTime}
+          size={70}
+        />
+      <div>
+        <HUDPrefix>{questionNumber} of 10</HUDPrefix>
+      </div>
+      <div>
+        <HUDPrefix>Score: {score}</HUDPrefix>
+      </div>
+    </HUDContainer>
+  );
+};
+export default HUD;

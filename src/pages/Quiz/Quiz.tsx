@@ -93,10 +93,8 @@ const Quiz: FunctionComponent<RouteComponentProps> = ({ history }) => {
                         <HUD
                             score={score}
                             questionNumber={questionNumber}
+                            timeRemaining={seconds}
                         />
-                        <>
-                       <h3> Time remaining: {seconds}</h3>
-                        </>
                         <Question question={currentQuestion} changeQuestion={changeQuestion} />
                     </QuizContainer>
                 )}

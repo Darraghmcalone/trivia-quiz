@@ -32,7 +32,7 @@ export const HomeButton = styled(Button)`
   
   &:hover {
     background-color: ${(props) => props.theme.colors.primaryHover}; // Darker blue on hover
-    cursor: pointer; // Changes the cursor to a pointer
+    cursor: pointer; 
   }
 
   @media only screen and (max-width: 786px) {
