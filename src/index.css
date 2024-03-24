@@ -12,6 +12,6 @@ body {
       monospace;
   }
   body > #root > div {
-    min-height: 100vh;
+    min-height: 100dvh;
     width: auto;
   }
