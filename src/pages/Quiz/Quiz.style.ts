@@ -10,8 +10,9 @@ export const QuizContainer = styled.div`
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding-top: 2rem;
   h3 {
     color: ${(props) => props.theme.colors.darkGrey};
   }
