@@ -43,18 +43,15 @@ const Question: FunctionComponent<QuestionProps> = ({
     <QuestionContaioner>
       <h1 dangerouslySetInnerHTML={{ __html: question.question }}></h1>
       <div>
-      {question.answerChoices.map((choice, index) => (
-        <ChoiceContainer
-          key={index}
-          onClick={() => checkAnswer(index)}
-          className={`choice-container ${
-            selectedAnswer === index && classToApply
-          }`}
-        >
-          <ChoicePrefix>{index + 1}</ChoicePrefix>
-          <ChoiceText dangerouslySetInnerHTML={{ __html: choice }}></ChoiceText>
-        </ChoiceContainer>
-      ))}
+        {question.answerChoices.map((choice, index) => (
+          <ChoiceContainer key={index} onClick={() => checkAnswer(index)}>
+            <ChoicePrefix>{index + 1}</ChoicePrefix>
+            <ChoiceText
+              className={`${selectedAnswer === index && classToApply}`}
+              dangerouslySetInnerHTML={{ __html: choice }}
+            ></ChoiceText>
+          </ChoiceContainer>
+        ))}
       </div>
     </QuestionContaioner>
   );
