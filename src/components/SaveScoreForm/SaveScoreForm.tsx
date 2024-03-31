@@ -5,7 +5,6 @@ import {
   Form,
   SaveScoreButton,
 } from './SaveScoreForm.styled';
-import { Button } from '../Button/Button';
 import { useFirebase } from '../Firebase/FirebaseContext';
 
 interface SaveScoreFormProps {
