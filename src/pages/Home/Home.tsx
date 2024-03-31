@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { HomeContainer, HomeButton, ButtonContainer } from './Home.styled'
 
+
+
 export default function Home() {
     return (
         <HomeContainer>

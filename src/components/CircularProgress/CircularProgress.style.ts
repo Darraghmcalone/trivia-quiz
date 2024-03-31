@@ -29,7 +29,7 @@ export const CircleProgress = styled.circle`
 `;
 
 export const CircleText = styled.text`
-  fill: #333;
+  fill: ${(props) => props.theme.colors.darkGrey};
   font-size: 1.5rem;
   text-anchor: middle;
   dominant-baseline: middle;

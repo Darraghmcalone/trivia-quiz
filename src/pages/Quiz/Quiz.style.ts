@@ -13,7 +13,6 @@ export const QuizContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding-top: 2rem;
-  width: 60%;
   h3 {
     color: ${(props) => props.theme.colors.darkGrey};
   }

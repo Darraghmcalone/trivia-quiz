@@ -67,7 +67,7 @@ export const HighScoresList = styled.div`
 
 export const HighScoreTitle = styled.h1`
   font-size: 2.5rem;
-  color: ${(props) => props.theme.colors.primary};;
+  color: ${(props) => props.theme.colors.white};
 
   @media only screen and (max-width: 768px) {
     font-size: 2rem;
@@ -76,7 +76,4 @@ export const HighScoreTitle = styled.h1`
 export const HighScoreButton = styled(Button)`
   width: 70%;
   margin-bottom: 5rem;
-  @media only screen and (min-width: 768px) {
-    width: 50%;
-  }
 `;

@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 import { Button } from '../../components/Button/Button';
 
-export const HomeContainer = styled.div`
-  height: 53%;
+export const HomeContainer =  styled.div`
+  height: 350px;
+  width: 350px;
   flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: ${(props) => props.theme.colors.transparent};
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  border-radius: 20px
   h1 {
-    font-size: 6em;
+    font-size: 4em;
     color: ${(props) => props.theme.colors.darkGrey};
   }
   @media only screen and (max-width: 425px) {
+    height: 300px;
+    width: 300px;
     h1 {
       font-size: 3.5em;
     }
@@ -19,7 +27,7 @@ export const HomeContainer = styled.div`
 `;
 
 export const HomeButton = styled(Button)`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   background-color: ${(props) => props.theme.colors.primary};
   color: ${(props) => props.theme.colors.white};
   border-radius: 6px;
@@ -31,12 +39,8 @@ export const HomeButton = styled(Button)`
   font-weight: bold;
   
   &:hover {
-    background-color: ${(props) => props.theme.colors.primaryHover}; // Darker blue on hover
+    background-color: ${(props) => props.theme.colors.primaryHover};
     cursor: pointer; 
-  }
-
-  @media only screen and (max-width: 786px) {
-    width: 70%;
   }
 
   @media only screen and (max-width: 426px) {
