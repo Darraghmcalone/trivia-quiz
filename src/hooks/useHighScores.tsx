@@ -56,7 +56,7 @@ const useHighScores = (): UseHighScoresReturn => {
 
   useEffect(() => {
     fetchScores(1, '');
-  }, [firebase]);
+  }, [firebase, fetchScores]);
 
   const handlePageChange = (page: number) => {
     if (page > currentPage && !hasNextPage) {
