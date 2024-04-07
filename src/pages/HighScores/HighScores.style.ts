@@ -77,6 +77,10 @@ export const HighScoreTitle = styled.h1`
 export const HighScoreButton = styled(Button)`
   width: 70%;
   margin-bottom: 5rem;
+  &:hover {
+    background-color: ${(props) => props.theme.colors.primaryHover};
+    cursor: pointer; 
+  }
 `;
 
 export const HighScoresPagination = styled.div`
