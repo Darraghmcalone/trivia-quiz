@@ -9,7 +9,7 @@ interface Score {
 
 interface UseHighScoresReturn {
   handlePageNavigation: (
-    e: React.MouseEvent<HTMLAnchorElement>,
+    e: React.MouseEvent<HTMLButtonElement>,
     page: number
   ) => void;
   totalPages: number;
@@ -67,7 +67,7 @@ const useHighScores = (): UseHighScoresReturn => {
   };
 
   const handlePageNavigation = (
-    e: React.MouseEvent<HTMLAnchorElement>,
+    e: React.MouseEvent<HTMLButtonElement>,
     page: number
   ): void => {
     e.preventDefault();

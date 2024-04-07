@@ -10,7 +10,6 @@ import {
 import { Link } from 'react-router-dom';
 import useHighScores from '../../hooks/useHighScores';
 
-
 const HighScores = () => {
   const {
     handlePageNavigation,
@@ -45,17 +44,21 @@ const HighScores = () => {
             {/* Previous Page Link */}
             <div className='page-item'>
               {currentPage > 1 ? (
-                <a
+                <button
                   onClick={(e) => handlePageNavigation(e, currentPage - 1)}
-                  href='#'
                   className='page-link inactive'
+                  aria-label='Go to previous page'
                 >
-                  <img src={require('../../assets/images/back-arrow.png')} />
-                </a>
+                  <img
+                    src={require('../../assets/images/back-arrow.png')}
+                    alt='Previous Page'
+                  />
+                </button>
               ) : (
                 <div className='page-link'>
                   <img
                     src={require('../../assets/images/back-arrow-inactive.png')}
+                    alt='Previous Page Inactive'
                   />
                 </div>
               )}
@@ -69,30 +72,34 @@ const HighScores = () => {
                     currentPage === pageNumber + 1 ? 'active' : ''
                   }`}
                 >
-                  <a
+                  <button
                     onClick={(e) => handlePageNavigation(e, pageNumber + 1)}
-                    href='#'
-                    className='page-link'
+                    className='page-link inactive'
+                    aria-label={`Go to ${pageNumber + 1} page`}
                   >
                     {pageNumber + 1}
-                  </a>
+                  </button>
                 </div>
               ))}
             </div>
             {/* Next Page Link */}
             <div className='page-item'>
               {hasNextPage ? (
-                <a
+                <button
                   onClick={(e) => handlePageNavigation(e, currentPage + 1)}
-                  href='#'
                   className='page-link'
+                  aria-label='Go to next page'
                 >
-                  <img src={require('../../assets/images/forward-arrow.png')} />
-                </a>
+                  <img
+                    src={require('../../assets/images/forward-arrow.png')}
+                    alt='Next Page'
+                  />
+                </button>
               ) : (
                 <div className='page-link inactive'>
                   <img
                     src={require('../../assets/images/forward-arrow-inactive.png')}
+                    alt='Next Page Inactive'
                   />
                 </div>
               )}

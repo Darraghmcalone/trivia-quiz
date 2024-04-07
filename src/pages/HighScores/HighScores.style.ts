@@ -93,11 +93,14 @@ export const HighScoresPagination = styled.div`
     width: 30px
     height: 100%;
   }
-  .page-item a {
+  .page-item button {
     height: 100%;
     width: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
   }
-  .page-item a, div {
+  .page-item button, div {
     color: white;
     text-decoration: none;
     font-size: 18px;
@@ -105,7 +108,7 @@ export const HighScoresPagination = styled.div`
     align-items: center;
     justify-content: center;
   }
-  .page-item.active a{
+  .page-item.active button {
     color:${(props) => props.theme.colors.primary};
   }
 `;
