@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useFirebase } from '../components/Firebase/FirebaseContext';
 
 interface Score {
@@ -41,7 +41,7 @@ const useHighScores = (): UseHighScoresReturn => {
   const scoresPerPage: number = 10;
   const totalPages: number = Math.ceil(totalScores / scoresPerPage);
 
-  const fetchScores = (page: number, lastScoreKey: string) => {
+  const fetchScores = useCallback((page: number, lastScoreKey: string) => {
     setLoading(true);
     firebase
       .fetchScores(scoresPerPage, lastScoreKey)
@@ -52,7 +52,7 @@ const useHighScores = (): UseHighScoresReturn => {
         setCurrentPage(page);
         setLoading(false);
       });
-  };
+  }, [firebase, scoresPerPage]); 
 
   useEffect(() => {
     fetchScores(1, '');
