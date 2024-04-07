@@ -1,55 +1,26 @@
-import React, { useState, useEffect, FunctionComponent } from 'react';
-import { useFirebase } from '../../components/Firebase/FirebaseContext';
+import React from 'react';
 import { Loader } from '../../components/Loader/Loader';
 import {
   HighScoreContainer,
   HighScoresList,
   HighScoreTitle,
   HighScoreButton,
+  HighScoresPagination,
 } from './HighScores.style';
 import { Link } from 'react-router-dom';
+import useHighScores from '../../hooks/useHighScores';
 
-interface Score {
-  key: string;
-  name: string;
-  score: number;
-}
 
-interface HighScoresProps {
-  highScores: Score[];
-  loadingInit?: boolean;
-}
-
-const HighScores: FunctionComponent<HighScoresProps> = ({
-  highScores,
-  loadingInit = true,
-}) => {
-  const firebase = useFirebase();
-  const [scores, setScores] = useState(highScores);
-  const [loading, setLoading] = useState(loadingInit);
-
-  useEffect(() => {
-    firebase.scores().once('value', (snapshot: any) => {
-      const data = snapshot.val();
-      const sortedScores = formatScoreData(data);
-      setScores(sortedScores);
-      setLoading(false);
-    });
-  }, [firebase]);
-
-  const formatScoreData = (firebaseScores: any) => {
-    const scores = [];
-
-    for (let key in firebaseScores) {
-      const val = firebaseScores[key];
-      val['key'] = key;
-      scores.push(val);
-    }
-
-    return scores
-      .sort((score1, score2) => score2.score - score1.score)
-  };
-
+const HighScores = () => {
+  const {
+    handlePageNavigation,
+    totalPages,
+    scoresPerPage,
+    scores,
+    loading,
+    hasNextPage,
+    currentPage,
+  } = useHighScores();
   return (
     <>
       {loading && <Loader />}
@@ -58,15 +29,75 @@ const HighScores: FunctionComponent<HighScoresProps> = ({
           <HighScoreTitle>High Scores</HighScoreTitle>
           <HighScoresList>
             {scores.map((record, index) => (
-              <div className="highScoreItem" key={record.key}>
-                <div className="leftCol">
-                  <h5 className="position"> {index + 1} </h5>
+              <div className='highScoreItem' key={record.key}>
+                <div className='leftCol'>
+                  <h5 className='position'>
+                    {' '}
+                    {(currentPage - 1) * scoresPerPage + index + 1}{' '}
+                  </h5>
                   <h5>{record.name}</h5>
                 </div>
                 <h5>{record.score}</h5>
               </div>
             ))}
           </HighScoresList>
+          <HighScoresPagination>
+            {/* Previous Page Link */}
+            <div className='page-item'>
+              {currentPage > 1 ? (
+                <a
+                  onClick={(e) => handlePageNavigation(e, currentPage - 1)}
+                  href='#'
+                  className='page-link inactive'
+                >
+                  <img src={require('../../assets/images/back-arrow.png')} />
+                </a>
+              ) : (
+                <div className='page-link'>
+                  <img
+                    src={require('../../assets/images/back-arrow-inactive.png')}
+                  />
+                </div>
+              )}
+            </div>
+            {/* Page Numbers */}
+            <div className='page-numbers'>
+              {[...Array(totalPages).keys()].map((pageNumber) => (
+                <div
+                  key={pageNumber + 1}
+                  className={`page-item ${
+                    currentPage === pageNumber + 1 ? 'active' : ''
+                  }`}
+                >
+                  <a
+                    onClick={(e) => handlePageNavigation(e, pageNumber + 1)}
+                    href='#'
+                    className='page-link'
+                  >
+                    {pageNumber + 1}
+                  </a>
+                </div>
+              ))}
+            </div>
+            {/* Next Page Link */}
+            <div className='page-item'>
+              {hasNextPage ? (
+                <a
+                  onClick={(e) => handlePageNavigation(e, currentPage + 1)}
+                  href='#'
+                  className='page-link'
+                >
+                  <img src={require('../../assets/images/forward-arrow.png')} />
+                </a>
+              ) : (
+                <div className='page-link inactive'>
+                  <img
+                    src={require('../../assets/images/forward-arrow-inactive.png')}
+                  />
+                </div>
+              )}
+            </div>
+          </HighScoresPagination>
           <HighScoreButton as={Link} to='/'>
             Go Home
           </HighScoreButton>

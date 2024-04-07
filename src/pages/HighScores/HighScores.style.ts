@@ -16,7 +16,7 @@ export const HighScoreContainer = styled.div`
 export const HighScoresList = styled.div`
   list-style: none;
   padding-left: 0;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   text-align: left;
   div {
     font-size: 1.75rem;
@@ -49,7 +49,8 @@ export const HighScoresList = styled.div`
     width: auto;
     background-color: white;
   }
-  h5,h6 {
+  h5,
+  h6 {
     margin: 0;
     color: ${(props) => props.theme.colors.darkGrey};
   }
@@ -76,4 +77,35 @@ export const HighScoreTitle = styled.h1`
 export const HighScoreButton = styled(Button)`
   width: 70%;
   margin-bottom: 5rem;
+`;
+
+export const HighScoresPagination = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  .page-numbers {
+    display: flex;
+    height: 30px;
+  }
+  .page-item {
+    width: 30px
+    height: 100%;
+  }
+  .page-item a {
+    height: 100%;
+    width: 100%;
+  }
+  .page-item a, div {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .page-item.active a{
+    color:${(props) => props.theme.colors.primary};
+  }
 `;
