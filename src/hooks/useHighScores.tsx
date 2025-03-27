@@ -22,56 +22,49 @@ interface UseHighScoresReturn {
 
 const useHighScores = (): UseHighScoresReturn => {
   const firebase = useFirebase();
+  const [allScores, setAllScores] = useState<Score[]>([]);
   const [scores, setScores] = useState<Score[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [lastKey, setLastKey] = useState<string>('');
-  const [hasNextPage, setHasNextPage] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalScores, setTotalScores] = useState<number>(0);
-
-  useEffect(() => {
-    const fetchTotalScoresCount = async () => {
-      const count = await firebase.getTotalScoresCount();
-      setTotalScores(count);
-    };
-
-    fetchTotalScoresCount();
-  }, [firebase]);
 
   const scoresPerPage: number = 10;
-  const totalPages: number = Math.ceil(totalScores / scoresPerPage);
 
-  const fetchScores = useCallback((page: number, lastScoreKey: string) => {
-    setLoading(true);
-    firebase
-      .fetchScores(scoresPerPage, lastScoreKey)
-      .then(({ scores, lastKey, hasNextPage }: any) => {
-        setScores(scores);
-        setLastKey(lastKey);
-        setHasNextPage(hasNextPage);
-        setCurrentPage(page);
-        setLoading(false);
-      });
-  }, [firebase, scoresPerPage]); 
+  const totalPages = Math.ceil(allScores.length / scoresPerPage);
+  const hasNextPage = currentPage < totalPages;
 
   useEffect(() => {
-    fetchScores(1, '');
-  }, [firebase, fetchScores]);
+    setLoading(true);
+    firebase
+      .scores()
+      .once('value')
+      .then((snapshot: any[]) => {
+        const fetchedScores: Score[] = [];
+        snapshot.forEach((child) => {
+          const key = child.key!;
+          const data = child.val();
+          fetchedScores.push({ key, ...data });
+        });
 
-  const handlePageChange = (page: number) => {
-    if (page > currentPage && !hasNextPage) {
-      return;
-    }
-    const newLastKey = page > currentPage ? lastKey : '';
-    fetchScores(page, newLastKey);
-  };
+        const sorted = fetchedScores.sort((a, b) => b.score - a.score);
+
+        setAllScores(sorted);
+        setLoading(false);
+      });
+  }, [firebase]);
+
+  useEffect(() => {
+    const start = (currentPage - 1) * scoresPerPage;
+    const end = start + scoresPerPage;
+    setScores(allScores.slice(start, end));
+  }, [currentPage, allScores, scoresPerPage]);
 
   const handlePageNavigation = (
     e: React.MouseEvent<HTMLButtonElement>,
     page: number
   ): void => {
     e.preventDefault();
-    handlePageChange(page);
+    if (page < 1 || page > totalPages) return;
+    setCurrentPage(page);
   };
 
   return {

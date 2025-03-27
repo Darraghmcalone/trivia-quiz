@@ -26,8 +26,7 @@ class Firebase {
     lastScoreKey: string = ''
   ): Promise<{ scores: Score[]; lastKey: string; hasNextPage: boolean }> => {
     let query = this.scores()
-      .orderByKey()
-      .limitToFirst(pageSize + 1); // +1 to check for next page
+    .orderByChild('score_order')
     if (lastScoreKey) query = query.startAt(lastScoreKey);
 
     return query.once('value').then((snapshot) => {
@@ -37,19 +36,19 @@ class Firebase {
         const data = childSnapshot.val();
         scores.push({ key, ...data });
       });
-
+      const reversed = scores.reverse();
       const hasNextPage = scores.length > pageSize;
       if (hasNextPage) scores.pop();
 
       const lastKey = scores.length > 0 ? scores[scores.length - 1].key : '';
 
-      return { scores, lastKey, hasNextPage };
+      return { scores:reversed, lastKey, hasNextPage };
     });
   };
   getTotalScoresCount = (): Promise<number> => {
     return this.scores()
       .once('value')
-      .then((snapshot) => snapshot.numChildren()); // numChildren() gives the count of child nodes
+      .then((snapshot) => snapshot.numChildren());
   };
 }
 
